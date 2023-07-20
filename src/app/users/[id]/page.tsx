@@ -25,14 +25,13 @@ const UserProfile = async ({ params }: Props) => {
 	const user = await prisma.user.findUnique({
 		where: { id: params.id },
 	});
-	const { name, bio } = user ?? {};
-	const image = null;
+	const { name, bio, image } = user ?? {};
 
 	return (
 		<div>
 			{' '}
 			<h1>{name}</h1>
-			<div className="relative block h-16 w-16">
+			<div className="relative block h-48 w-48">
 				<Image
 					src={
 						image ??
@@ -42,7 +41,8 @@ const UserProfile = async ({ params }: Props) => {
 					fill
 				/>
 			</div>{' '}
-			<h3>{bio}</h3>
+			<h3>Bio</h3>
+			<p>{bio}</p>
 		</div>
 	);
 };
