@@ -8,15 +8,15 @@ export const NavBar = () => {
 		<div className=" bg-gray-800">
 			<nav className="flex items-center justify-between flex-wrap p-6 w-[90%] mx-auto max-w-1200">
 				{' '}
-				<Link href="/">
-					<Image src={logo} width={50} height={50} alt="Logo" />
+				<Link href="/" className="relative h-16 w-16">
+					<Image src={logo} alt="Logo" />
 				</Link>
 				<ul className="flex items-center justify-between w-[20%] gap-2">
 					<li>
 						<Link href="/about">About</Link>
 					</li>
 					<li>
-						<Link href="/Blog">Blog</Link>
+						<Link href="/blog">Blog</Link>
 					</li>
 					<li>
 						<Link href="/users">Users</Link>

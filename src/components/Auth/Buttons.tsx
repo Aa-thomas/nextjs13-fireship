@@ -7,6 +7,7 @@ import { PulseLoader } from 'react-spinners';
 
 export const SignInButton = () => {
 	const { data: session, status } = useSession();
+	const { name, image } = session?.user ?? {};
 
 	if (status === 'loading') {
 		return (
@@ -21,17 +22,15 @@ export const SignInButton = () => {
 			<Link href="/dashboard" className="relative block h-16 w-16">
 				<Image
 					src={
-						session.user?.image ??
+						image ??
 						`https://api.dicebear.com/6.x/initials/svg?seed=${session.user?.name}`
 					}
-					alt={`Avatar for ${session.user?.name}`}
-					fill={true}
+					alt={`Avatar for ${name}`}
+					fill
 				/>
 			</Link>
 		);
 	}
-
-	console.log(session);
 
 	return (
 		<button
