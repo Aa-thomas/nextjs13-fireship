@@ -7,7 +7,7 @@ import { prisma } from '../../../../lib/prisma';
 export const POST = async (req: Request) => {
 	const session = await getServerSession(authOptions);
 	const currentUserEmail = session?.user?.email!;
-	const targetUserId = await req.json();
+	const { targetUserId } = await req.json();
 
 	const currentUserId = await prisma.user
 		.findUnique({

@@ -1,5 +1,5 @@
 'use client';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { FunctionComponent, useState, useTransition } from 'react';
 
 type FollowClientProps = {
@@ -18,13 +18,15 @@ const FollowClient: FunctionComponent<FollowClientProps> = ({
 
 	const follow = async () => {
 		setIsFetching(true);
-		const res = await fetch(`/api/follow`, {
+		const res = await fetch('/api/follow', {
 			method: 'POST',
 			body: JSON.stringify({ targetUserId }),
 			headers: {
 				'Content-Type': 'application/json',
 			},
 		});
+
+		console.log(res);
 
 		setIsFetching(false);
 		startTransition(() => router.refresh());
@@ -36,16 +38,18 @@ const FollowClient: FunctionComponent<FollowClientProps> = ({
 			method: 'DELETE',
 		});
 
+		console.log(res);
+
 		setIsFetching(false);
 		startTransition(() => router.refresh());
 	};
 
 	if (isFollowing) {
 		return (
-			<button onClick={unfollow}>{isMutating ? 'Unfollow' : '...'}</button>
+			<button onClick={unfollow}>{!isMutating ? 'Unfollow' : '...'}</button>
 		);
 	} else {
-		return <button onClick={follow}>{isMutating ? 'Follow' : '...'}</button>;
+		return <button onClick={follow}>{!isMutating ? 'Follow' : '...'}</button>;
 	}
 };
 

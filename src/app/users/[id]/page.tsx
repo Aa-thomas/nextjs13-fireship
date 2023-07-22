@@ -3,6 +3,7 @@ import { prisma } from '../../../../lib/prisma';
 import Image from 'next/image';
 import { Metadata } from 'next';
 import FollowButton from '@/components/Auth/Follow/FollowButton';
+import { FunctionComponent } from 'react';
 
 type Props = {
 	params: {
@@ -10,9 +11,7 @@ type Props = {
 	};
 };
 
-export const generateMetaData = async ({
-	params,
-}: Props): Promise<Metadata> => {
+const generateMetaData = async ({ params }: Props): Promise<Metadata> => {
 	const user = await prisma.user.findUnique({
 		where: { id: params.id },
 	});
@@ -22,7 +21,7 @@ export const generateMetaData = async ({
 	};
 };
 
-const UserProfile = async ({ params }: Props) => {
+const UserProfile: FunctionComponent<Props> = async ({ params }) => {
 	const user = await prisma.user.findUnique({
 		where: { id: params.id },
 	});

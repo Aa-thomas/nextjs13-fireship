@@ -1,4 +1,4 @@
-export default [
+const dummyPosts = [
 	{
 		title: 'The Power of Positive Thinking',
 		slug: 'power-positive-thinking',
@@ -72,3 +72,5 @@ export default [
 			'Learn to live in the present moment and cultivate a sense of mindfulness in your everyday life, enhancing your overall well-being and fostering inner peace.',
 	},
 ];
+
+export default dummyPosts;
