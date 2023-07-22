@@ -2,6 +2,7 @@ import { User } from '@prisma/client';
 import { prisma } from '../../../../lib/prisma';
 import Image from 'next/image';
 import { Metadata } from 'next';
+import FollowButton from '@/components/Auth/Follow/FollowButton';
 
 type Props = {
 	params: {
@@ -45,6 +46,7 @@ const UserProfile = async ({ params }: Props) => {
 			{/* </div>{' '} */}
 			<h3>Bio</h3>
 			<p>{bio}</p>
+			<FollowButton targetUserId={params.id} />
 		</div>
 	);
 };
