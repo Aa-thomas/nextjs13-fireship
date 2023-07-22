@@ -1,17 +1,13 @@
 'use client';
 
-import { StaticImageData } from 'next/image';
+import { User } from '@prisma/client';
+import { FC, FunctionComponent } from 'react';
 
-type UserProfileProps = {
-	user: {
-		name: string;
-		bio: string;
-		age: number;
-		image: string;
-	};
+type ProfileFormProps = {
+	user: User | null;
 };
 
-const ProfileForm = ({ user }: UserProfileProps) => {
+const ProfileForm = ({ user }: ProfileFormProps) => {
 	const updateUser = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		const formData = new FormData(e.currentTarget);
@@ -34,19 +30,35 @@ const ProfileForm = ({ user }: UserProfileProps) => {
 	return (
 		<div>
 			<h2>Edit Your Profile</h2>
-			<form onSubmit={updateUser}>
+			<form onSubmit={updateUser} className="flex flex-col gap-2">
 				<label htmlFor="name">Name</label>
-				<input type="text" name="name" defaultValue={user?.name ?? ''} />
+				<input
+					className="text-black"
+					type="text"
+					name="name"
+					defaultValue={user?.name ?? ''}
+				/>
 				<label htmlFor="bio">Bio</label>
 				<textarea
+					className="text-black"
 					name="bio"
 					cols={30}
 					rows={10}
 					defaultValue={user?.bio ?? ''}></textarea>
 				<label htmlFor="age">Age</label>
-				<input type="text" name="age" defaultValue={user?.age ?? 0} />
+				<input
+					className="text-black"
+					type="text"
+					name="age"
+					defaultValue={user?.age ?? 0}
+				/>
 				<label htmlFor="image">Profile Image URL</label>
-				<input type="text" name="image" defaultValue={user?.image ?? ''} />
+				<input
+					className="text-black"
+					type="text"
+					name="image"
+					defaultValue={user?.image ?? ''}
+				/>
 
 				<button type="submit">Save</button>
 			</form>

@@ -5,11 +5,11 @@ import UserCard from '@/components/UserCard/UserCard';
 const Users = async () => {
 	const users = await prisma.user.findMany();
 	return (
-		<div>
+		<main className="flex flex-wrap flex-col sm:flex-row ">
 			{users.map((user) => {
 				return <UserCard key={user.id} {...user} />;
 			})}
-		</div>
+		</main>
 	);
 };
 

@@ -28,19 +28,21 @@ const UserProfile = async ({ params }: Props) => {
 	const { name, bio, image } = user ?? {};
 
 	return (
-		<div>
+		<div className="flex flex-col items-center gap-5 ">
 			{' '}
 			<h1>{name}</h1>
-			<div className="relative block h-48 w-48">
-				<Image
-					src={
-						image ??
-						`https://api.dicebear.com/6.x/initials/svg?seed=${name}&radius=50`
-					}
-					alt={`Avatar for ${name}`}
-					fill
-				/>
-			</div>{' '}
+			{/* <div > */}
+			<Image
+				src={
+					image ??
+					`https://api.dicebear.com/6.x/initials/svg?seed=${name}&radius=50`
+				}
+				alt={`Avatar for ${name}`}
+				width={1000}
+				height={1000}
+				className="relative block h-36 w-36"
+			/>
+			{/* </div>{' '} */}
 			<h3>Bio</h3>
 			<p>{bio}</p>
 		</div>

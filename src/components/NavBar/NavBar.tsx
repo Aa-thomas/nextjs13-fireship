@@ -11,7 +11,7 @@ export const NavBar = () => {
 				<Link href="/" className="relative h-16 w-16">
 					<Image src={logo} alt="Logo" />
 				</Link>
-				<ul className="flex items-center justify-between w-[20%] gap-2">
+				<ul className="flex items-center justify-between w-[40%] gap-2">
 					<li>
 						<Link href="/about">About</Link>
 					</li>

@@ -9,13 +9,15 @@ const Dashboard = async () => {
 	if (!session) redirect('/api/auth/signin');
 
 	const currentUserEmail = session?.user?.email!;
+	console.log('currentUserEmail', currentUserEmail);
 	const user = await prisma.user.findUnique({
 		where: { email: currentUserEmail },
 	});
+
 	return (
 		<div className="flex flex-col justify-center items-center">
-			<h1>DashBoard</h1>
-			<ProfileForm />
+			<h1 className="text-5xl mx-5 my-5">DashBoard</h1>
+			<ProfileForm user={user} />
 		</div>
 	);
 };

@@ -10,7 +10,7 @@ type Props = {
 
 const UserCard = ({ id, name, age, image }: Props) => {
 	return (
-		<div className="bg-gray-700 p-2 w-48 rounded-xl mx-2 my-2 flex flex-col items-center">
+		<div className="bg-gray-700 p-2 rounded-xl mx-2 my-2 flex flex-col items-center flex-1 basis-1/5">
 			<div className="relative h-16 w-16">
 				<Image
 					src={
